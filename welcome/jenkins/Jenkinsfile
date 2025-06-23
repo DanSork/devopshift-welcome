@@ -15,7 +15,7 @@ pipeline {
            steps {
                script {
                    // Call the mock buildApp function
-                   Library.buildApp()
+                   myLibrary.buildApp()
                }
            }
        }
@@ -26,7 +26,7 @@ pipeline {
                    // If APP_DEBUG is set to 'true' set env.BRANCH_NAME to DEBUG_BRANCH
                    env.BRANCH_NAME = env.APP_DEBUG == 'true' ? env.DEBUG_BRANCH : env.BRANCH_NAME
                    // Call the mock deployApp function with the current branch name
-                   Library.deployApp(env.BRANCH_NAME)
+                   myLibrary.deployApp(env.BRANCH_NAME)
                }
            }
        }
@@ -36,7 +36,7 @@ pipeline {
        always {
            script {
                // Call the mock cleanup function
-               Library.cleanup()
+               myLibrary.cleanup()
            }
        }
    }
