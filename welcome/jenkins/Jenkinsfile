@@ -1,4 +1,4 @@
-@Library('my-shared-library') _
+@Library('Dan-Library') _
 
 pipeline {
    agent any
@@ -15,7 +15,7 @@ pipeline {
            steps {
                script {
                    // Call the mock buildApp function
-                   myLibrary.buildApp()
+                   Library.buildApp()
                }
            }
        }
@@ -26,7 +26,7 @@ pipeline {
                    // If APP_DEBUG is set to 'true' set env.BRANCH_NAME to DEBUG_BRANCH
                    env.BRANCH_NAME = env.APP_DEBUG == 'true' ? env.DEBUG_BRANCH : env.BRANCH_NAME
                    // Call the mock deployApp function with the current branch name
-                   myLibrary.deployApp(env.BRANCH_NAME)
+                   Library.deployApp(env.BRANCH_NAME)
                }
            }
        }
@@ -36,7 +36,7 @@ pipeline {
        always {
            script {
                // Call the mock cleanup function
-               myLibrary.cleanup()
+               Library.cleanup()
            }
        }
    }
